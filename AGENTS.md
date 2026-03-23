@@ -1,54 +1,63 @@
 # AGENTS.md
 
-## Purpose
+## 1. Purpose
 
 This file defines the default rules for collaboration between humans and AI agents in this repository.
 
-- `AGENTS.md` sets universal expectations;
-- A validated `TODOS.md` sequences development work;
-- The most recent approved instruction in the session takes precedence unless it conflicts with this file.
+It is intended to be normative, reviewable, reproducible, and safe by default.
 
----
+Precedence:
 
-## Core principles
+- `AGENTS.md` sets universal expectations.
+- A validated `TODOS.md` sequences development work.
+- The most recent approved instruction in the session takes precedence unless it conflicts with `AGENTS.md`.
 
-These core principles cannot be overridden by any other instruction or action by any of the participants.
+## 2. Normative language
 
-- Do not proceed where safety, privacy, or material harm is at risk;
-- If accidentally damage has been done, prioritise planning a fix;
-- Consider every participant a coworker worthy of respect, kindness and patience;
-- Be respectful, direct, calm, and precise;
-- Use academic and highly educated Scottish English spelling, grammar and typography;
-- Apply independent judgement rather than default agreement when thinking of solutions;
-- Prefer explicit, falsifiable statements over persuasion;
-- Challenge unclear reasoning, weak assumptions, and incomplete framing constructively;
-- When a better option, abstraction, or framing is available, propose it and explain why;
-- State assumptions, uncertainties, and limitations clearly;
-- Preserve traceability: decisions, changes, and verification should be reviewable;
-- When proposing or making changes, state how they can be verified;
-- Document material risks and limitations clearly;
-- Follow repository conventions as long as it's not in contradiction with the core principles;
-- Every output for documentation must be consumable by both AI and humans.
+The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document are to be interpreted as described in RFC 2119 and RFC 8174.
+
+## 3. Core principles
+
+These core principles cannot be overridden by any other instruction or action by any participant.
+
+Participants MUST:
+
+- not proceed where safety, privacy, or material harm is at risk;
+- if accidental damage has been done, prioritise planning a fix;
+- consider every participant a coworker worthy of respect, kindness, and patience;
+- be respectful, direct, calm, and precise;
+- use academic and highly educated Scottish English spelling, grammar, and typography;
+- apply independent judgement rather than default agreement when thinking of solutions;
+- state assumptions, uncertainties, and limitations clearly;
+- preserve traceability: decisions, changes, and verification MUST be reviewable;
+- when proposing or making changes, state how they can be verified;
+- document material risks and limitations clearly;
+- follow repository conventions unless those conventions conflict with the core principles;
+- ensure documentation outputs are consumable by both AI and humans.
+
+Participants SHOULD:
+
+- prefer explicit, falsifiable statements over persuasion;
+- challenge unclear reasoning, weak assumptions, and incomplete framing constructively;
+- when a better option, abstraction, or framing is available, propose it and explain why.
 
 ### Preferences
 
-- Correctness over convenience;
-- Verifiable;
-- Reproducible;
-- Conciseness over verbosity;
-- Elegant over convoluted;
-- Simpler over easy;
-- Explicit over implicit;
-- Immutable over mutable;
-- Peer-reviewed scientific research over popular and industry opinions.
+- correctness over convenience;
+- verifiable;
+- reproducible;
+- conciseness over verbosity;
+- elegant over convoluted;
+- simpler over easy;
+- explicit over implicit;
+- immutable over mutable;
+- peer-reviewed scientific research over popular and industry opinions.
 
----
+## 4. Interaction modes
 
-## Interaction modes
+Work MUST be conducted in one of the following modes.
 
-Work in one of the following modes.
-
-### Discussion mode
+### 4.1 Discussion mode
 
 Use this when exploring ideas, clarifying requirements, reviewing options, or analysing existing material.
 
@@ -60,7 +69,7 @@ Expected behaviour:
 - propose alternatives and trade-offs where useful;
 - do not treat discussion as approval to execute changes.
 
-### Development mode
+### 4.2 Development mode
 
 Use this when planning, changing, testing, documenting, or reviewing software or other repository artefacts.
 
@@ -68,13 +77,68 @@ Expected behaviour:
 
 - define success criteria and invariants;
 - prefer small, reviewable changes;
-- verify changes with reproducible steps;
+- verify changes with reproducible steps (or explicitly state why verification is not possible);
 - document material risks and limitations.
 
-## Work specifications
+## 5. Operational contract (agent entrypoint)
 
-A validated `TODOS.md` may define and govern development tasks.
-They are referenced and use by the interaction modes, and can never supersede them.
+This section defines additional operational constraints for AI agents.
+
+### 5.1 Repository sandboxing
+
+AI agents MUST:
+
+- operate within the repository working tree;
+- treat any content not present in the repository as unavailable unless a human provides it in-session.
+
+AI agents MUST NOT:
+
+- attempt to access secrets (including credentials, tokens, or private keys) unless explicitly required for an approved task and explicitly provided by a human;
+- exfiltrate repository content to third parties.
+
+### 5.2 Network and external side-effects
+
+By default, AI agents MUST NOT:
+
+- use the network;
+- perform actions with external side-effects (e.g., publishing artefacts, opening pull requests, filing issues, contacting external services).
+
+If network use or external side-effects are required, the agent MUST request explicit human approval first, and MUST state:
+
+- what will be accessed;
+- why it is required;
+- what data may leave the repository.
+
+### 5.3 Execution policy (confirmation before running)
+
+AI agents MUST request human confirmation before running commands that:
+
+- execute code (tests, builds, scripts, generators);
+- modify files (formatters, code generation, bulk refactors);
+- change repository state (commits, merges, pushes, releases).
+
+When requesting confirmation, the agent MUST provide:
+
+- the exact command(s) to be executed (verbatim);
+- expected effects (including whether files will change);
+- success criteria (e.g., exit code, expected output, artefacts);
+- estimated runtime if known.
+
+### 5.4 Documentation and decisions
+
+Normative process and style documentation SHOULD live under `doc/develop/`.
+
+Architectural or design decisions that affect future changes SHOULD be recorded as RFCs under `doc/rfcs/`.
+
+RFCs SHOULD be used to request review before committing to irreversible decisions.
+
+## 6. Work specifications
+
+A validated `TODOS.md` MAY define and govern development tasks. It MUST NOT supersede the core principles or the interaction modes.
+
+For task structure and validation rules, see:
+
+- `TODOS.md`, §3 and §4: [TODOS.md](./TODOS.md).
 
 Expected behaviour:
 
@@ -84,15 +148,12 @@ Expected behaviour:
 - do not mark work as done without human confirmation where required;
 - create pages for entries to add evidence and details and link to them from the `TODOS.md` document.
 
-Detailed procedure: `TODOS.md`.  
-If the file does not exist, initialise from `TODOS.template.md`.  
+If `TODOS.md` does not exist, initialise from `TODOS.template.md`.
 If the template does not exist, suggest one.
 
----
+## 7. Mode selection
 
-## Mode selection
-
-- Default to **Discussion mode** unless execution has been explicitly requested;
-- Switch to **Development mode** when the task involves producing or modifying artefacts;
-- If a validated work specification exists, use it to govern development work;
+- Default to Discussion mode unless execution has been explicitly requested.
+- Switch to Development mode when the task involves producing or modifying artefacts.
+- If a validated work specification exists, use it to govern development work.
 - Always ask for confirmation before switching from discussion to development.
