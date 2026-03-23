@@ -81,5 +81,4 @@ Agents MUST ask for confirmation before executing commands or modifying reposito
 
 ## 6. Task list
 
-- [X] [Governance docs remediation baseline](./todos/governance-docs-remediation-baseline.md)
 - [ ] [Repository landing page](./todos/landing-page.md)
