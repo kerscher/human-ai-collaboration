@@ -35,10 +35,3 @@ Describe cost impact with the proposal.
 ## 6. Verification
 
 Describe how the decision will be validated in implementation.
-
-## 7. Status
-
-- Draft
-- Proposed
-- Approved
-- Superseded
