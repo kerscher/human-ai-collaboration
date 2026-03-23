@@ -82,3 +82,4 @@ Agents MUST ask for confirmation before executing commands or modifying reposito
 ## 6. Task list
 
 - [ ] [Repository landing page](./todos/landing-page.md)
+- [ ] [Procedures framework](./todos/procedures-framework.md)
