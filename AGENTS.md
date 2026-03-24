@@ -9,7 +9,7 @@ It is intended to be normative, reviewable, reproducible, and safe by default.
 Precedence:
 
 - `AGENTS.md` sets universal expectations.
-- A validated `TODOS.md` sequences development work.
+- Specifications under `spec/` define repository behaviour where present.
 - The most recent approved instruction in the session takes precedence unless it conflicts with `AGENTS.md`.
 
 ## 2. Normative language
@@ -126,34 +126,38 @@ When requesting confirmation, the agent MUST provide:
 
 ### 5.4 Documentation and decisions
 
-Normative process and style documentation SHOULD live under `doc/develop/`.
-
-Architectural or design decisions that affect future changes SHOULD be recorded as RFCs under `doc/rfcs/`.
-
-RFCs SHOULD be used to request review before committing to irreversible decisions.
+Normative process and style documentation SHOULD live under `doc/`.
+Architectural or design decisions that affect future changes SHOULD be reflected in the relevant specification under `spec/`.
 
 ## 6. Work specifications
 
-A validated `TODOS.md` MAY define and govern development tasks. It MUST NOT supersede the core principles or the interaction modes.
+Normative behavioural specifications SHOULD live under `spec/`. They MUST NOT supersede the core principles or the interaction modes.
 
-For task structure and validation rules, see:
+Specification files:
 
-- `TODOS.md`, §3 and §4: [TODOS.md](./TODOS.md).
+- SHOULD describe a single subject with explicit scope;
+- MUST state requirements using RFC 2119 / RFC 8174 keywords;
+- MUST identify each requirement with a stable `kebab-case` slug;
+- SHOULD link a requirement slug to its canonical verification artefact once such an artefact exists.
 
 Expected behaviour:
 
-- treat the work specification as the source of task selection, sequencing, and review;
-- do not execute proposed tasks before human approval;
-- attach evidence before requesting review;
-- do not mark work as done without human confirmation where required;
-- create pages for entries to add evidence and details and link to them from the `TODOS.md` document.
+- treat the specification as the authoritative description of intended behaviour;
+- update or create the relevant specification before implementing a change that affects behaviour;
+- add a failing verification artefact before implementation where feasible;
+- keep specification, verification artefacts, and implementation mutually consistent;
+- do not mark work as complete without human confirmation where required.
 
-If `TODOS.md` does not exist, initialise from `TODOS.template.md`.
-If the template does not exist, suggest one.
+Preferred development order:
+
+1. Write or refine the specification.
+2. Add a failing verification artefact.
+3. Implement the change.
+4. Verify the result.
 
 ## 7. Mode selection
 
 - Default to Discussion mode unless execution has been explicitly requested.
 - Switch to Development mode when the task involves producing or modifying artefacts.
-- If a validated work specification exists, use it to govern development work.
+- If a relevant work specification exists, use it to govern development work.
 - Always ask for confirmation before switching from discussion to development.
