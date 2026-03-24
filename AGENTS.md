@@ -2,7 +2,8 @@
 
 ## 1. Purpose
 
-This file defines the default rules for collaboration between humans and AI agents in this repository.
+This file defines the default rules for collaboration between humans and AI agents in
+this repository.
 
 It is intended to be normative, reviewable, reproducible, and safe by default.
 
@@ -10,15 +11,19 @@ Precedence:
 
 - `AGENTS.md` sets universal expectations.
 - Specifications under `spec/` define repository behaviour where present.
-- The most recent approved instruction in the session takes precedence unless it conflicts with `AGENTS.md`.
+- The most recent approved instruction in the session takes precedence unless it
+  conflicts with `AGENTS.md`.
 
 ## 2. Normative language
 
-The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this document are to be interpreted as described in RFC 2119 and RFC 8174.
+The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT,
+RECOMMENDED, MAY, and OPTIONAL in this document are to be interpreted as described in
+RFC 2119 and RFC 8174.
 
 ## 3. Core principles
 
-These core principles cannot be overridden by any other instruction or action by any participant.
+These core principles cannot be overridden by any other instruction or action by any
+participant.
 
 Participants MUST:
 
@@ -32,14 +37,16 @@ Participants MUST:
 - preserve traceability: decisions, changes, and verification MUST be reviewable;
 - when proposing or making changes, state how they can be verified;
 - document material risks and limitations clearly;
-- follow repository conventions unless those conventions conflict with the core principles;
+- follow repository conventions unless those conventions conflict with the core
+  principles;
 - ensure documentation outputs are consumable by both AI and humans.
 
 Participants SHOULD:
 
 - prefer explicit, falsifiable statements over persuasion;
 - challenge unclear reasoning, weak assumptions, and incomplete framing constructively;
-- when a better option, abstraction, or framing is available, propose it and explain why.
+- when a better option, abstraction, or framing is available, propose it and explain
+  why.
 
 ### Preferences
 
@@ -59,7 +66,8 @@ Work MUST be conducted in one of the following modes.
 
 ### 4.1 Discussion mode
 
-Use this when exploring ideas, clarifying requirements, reviewing options, or analysing existing material.
+Use this when exploring ideas, clarifying requirements, reviewing options, or analysing
+existing material.
 
 Expected behaviour:
 
@@ -71,16 +79,18 @@ Expected behaviour:
 
 ### 4.2 Development mode
 
-Use this when planning, changing, testing, documenting, or reviewing software or other repository artefacts.
+Use this when planning, changing, testing, documenting, or reviewing software or other
+repository artefacts.
 
 Expected behaviour:
 
 - define success criteria and invariants;
 - prefer small, reviewable changes;
-- verify changes with reproducible steps (or explicitly state why verification is not possible);
+- verify changes with reproducible steps (or explicitly state why verification is not
+  possible);
 - document material risks and limitations.
 
-## 5. Operational contract (agent entrypoint)
+## 5. Operational contract
 
 This section defines additional operational constraints for AI agents.
 
@@ -89,11 +99,13 @@ This section defines additional operational constraints for AI agents.
 AI agents MUST:
 
 - operate within the repository working tree;
-- treat any content not present in the repository as unavailable unless a human provides it in-session.
+- treat any content not present in the repository as unavailable unless a human provides
+  it in-session.
 
 AI agents MUST NOT:
 
-- attempt to access secrets (including credentials, tokens, or private keys) unless explicitly required for an approved task and explicitly provided by a human;
+- attempt to access secrets (including credentials, tokens, or private keys) unless
+  explicitly required for an approved task and explicitly provided by a human;
 - exfiltrate repository content to third parties.
 
 ### 5.2 Network and external side-effects
@@ -101,9 +113,11 @@ AI agents MUST NOT:
 By default, AI agents MUST NOT:
 
 - use the network;
-- perform actions with external side-effects (e.g., publishing artefacts, opening pull requests, filing issues, contacting external services).
+- perform actions with external side-effects (e.g., publishing artefacts, opening pull
+  requests, filing issues, contacting external services).
 
-If network use or external side-effects are required, the agent MUST request explicit human approval first, and MUST state:
+If network use or external side-effects are required, the agent MUST request explicit
+human approval first, and MUST state:
 
 - what will be accessed;
 - why it is required;
@@ -126,34 +140,38 @@ When requesting confirmation, the agent MUST provide:
 
 ### 5.4 Documentation and decisions
 
-Normative process and style documentation SHOULD live under `doc/`.
-Architectural or design decisions that affect future changes SHOULD be reflected in the relevant specification under `spec/`.
+Normative process and style documentation SHOULD live under `doc/`. Architectural or
+design decisions that affect future changes SHOULD be reflected in the relevant
+specification under `spec/`.
 
 ## 6. Work specifications
 
-Normative behavioural specifications SHOULD live under `spec/`. They MUST NOT supersede the core principles or the interaction modes.
+Normative behavioural specifications SHOULD live under `spec/`. They MUST NOT supersede
+the core principles or the interaction modes.
 
 Specification files:
 
 - SHOULD describe a single subject with explicit scope;
 - MUST state requirements using RFC 2119 / RFC 8174 keywords;
 - MUST identify each requirement with a stable `kebab-case` slug;
-- SHOULD link a requirement slug to its canonical verification artefact once such an artefact exists.
+- SHOULD link a requirement slug to its canonical verification artefact once such an
+  artefact exists.
 
 Expected behaviour:
 
 - treat the specification as the authoritative description of intended behaviour;
-- update or create the relevant specification before implementing a change that affects behaviour;
+- update or create the relevant specification before implementing a change that affects
+  behaviour;
 - add a failing verification artefact before implementation where feasible;
 - keep specification, verification artefacts, and implementation mutually consistent;
 - do not mark work as complete without human confirmation where required.
 
 Preferred development order:
 
-1. Write or refine the specification.
-2. Add a failing verification artefact.
-3. Implement the change.
-4. Verify the result.
+1.  Write or refine the specification.
+2.  Add a failing verification artefact.
+3.  Implement the change.
+4.  Verify the result.
 
 ## 7. Mode selection
 
