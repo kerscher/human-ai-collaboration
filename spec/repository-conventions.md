@@ -14,10 +14,12 @@ individual commits.
 
 ## 3. Requirements
 
-- `formatting-matches-format-script`: Repository artefacts maintained by the formatter
-  MUST match the output produced by `./scripts/doc/format.sh`.
-- `commit-subjects-use-conventional-commits`: Git commit messages MUST use the
-  Conventional Commits structure and MUST follow these repository constraints:
+- [`formatting-matches-format-script`](../test/repository-conventions/formatting-matches-format-script/verify.sh):
+  Repository artefacts maintained by the formatter MUST match the output produced by
+  `./scripts/doc/format.sh`.
+- [`commit-subjects-use-conventional-commits`](../test/repository-conventions/commit-subjects-use-conventional-commits/verify.sh):
+  Git commit messages MUST use the Conventional Commits structure and MUST follow these
+  repository constraints:
   - the commit type MUST be one of `feat`, `doc`, `refactor`, `fix`, or `test`;
   - the optional scope MAY be used when needed to identify the affected subject;
   - the subject line MUST be succinct and descriptive;

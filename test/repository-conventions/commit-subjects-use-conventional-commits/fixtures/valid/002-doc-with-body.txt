@@ -1,0 +1,6 @@
+doc(spec): commit style constraints
+
+- allowed types list
+- optional scope guidance
+- subject clarity rule
+- body noun phrase style

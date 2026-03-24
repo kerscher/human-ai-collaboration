@@ -1,0 +1,4 @@
+doc(spec): commit style constraints
+
+- allowed types list
+- updates scope guidance
